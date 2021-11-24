@@ -6,75 +6,74 @@
 /*   By: tromano <tromano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 17:43:52 by tromano           #+#    #+#             */
-/*   Updated: 2021/11/23 18:13:48 by tromano          ###   ########.fr       */
+/*   Updated: 2021/11/24 13:27:34 by tromano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-int	ft_isconv(const char *s);
+int		ft_isconv(const char *s);
 
-int	ft_handle(const char *s, va_list va_lst);
+void	ft_handle(const char *s, t_sprint *tab, int i);
 
 int	ft_printf(const char *s, ...)
 {
-	va_list	lst;
-	int		count;
+	t_sprint	*tab;
+	int			count;
+	int			i;
 
+	tab = malloc(sizeof(t_sprint));
+	if (!tab)
+		return (0);
 	count = 0;
-	va_start(lst, s);
-	while (*s)
+	i = 0;
+	va_start(tab->args, s);
+	while (s[i])
 	{
-		if (*s != '%')
-		{
-			ft_putchar(s);
-			s++;
-			count++;
-		}
+		if (s[i] != '%')
+			count += write(1, &s[i], 1);
 		else
 		{
-			s++;
-			if (ft_isconv(s))
-			{
-				//ft_handle(s, lst);
-				count = ft_handle(s, lst);
-			}
-		}	
+			i++;
+			ft_handle(s, tab, i);
+		}
+		i++;
 	}
-	va_end(lst);
+	count += tab->count;
+	va_end(tab->args);
+	free(tab);
 	return (count);
 }
 
-int	ft_isconv(const char *s)
+void	ft_handle(const char *s, t_sprint *tab, int i)
 {
-	return (*s == 'c' || *s == 's' || *s == 'p' || *s == 'd' || *s == 'i'
-		|| *s == 'u' || *s == 'x' || *s == 'X' || *s == '%');
-}
-
-int	ft_handle(const char *s, va_list lst)
-{
-	if (*s == 'c')
-		return (ft_handle_c(va_arg(lst, const char *)));
-	else if (*s == 's')
-		return (ft_handle_s(va_arg(lst, char *)));
-	else if (*s == 'p')
-		return (ft_handle_p(va_arg(lst, void *)));
-	else if (*s == 'd')
-		return (ft_handle_d(va_arg(lst, int)));
-	else if (*s == 'i')
-		return (ft_handle_i(va_arg(lst, int)));
-	else if (*s == 'u')
-		return (ft_handle_u(va_arg(lst, unsigned int)));
-	else if (*s == 'x')
-		return (ft_handle_x(va_arg(lst, int)));
-	else if (*s == 'X')
-		return (ft_handle_xmaj(va_arg(lst, int)));
-	else if (*s == '%')
-		return (ft_handle_percent(va_arg(lst, int)));
+	if (s[i] == 'c')
+		ft_handle_c(tab);
+	else if (s[i] == 's')
+		ft_handle_s(tab);
+	else if (s[i] == 'p')
+		ft_handle_p(tab);
+	else if (s[i] == 'd')
+		ft_handle_d(tab);
+	else if (s[i] == 'i')
+		ft_handle_i(tab);
+	else if (s[i] == 'u')
+		ft_handle_u(tab);
+	else if (s[i] == 'x')
+		ft_handle_x(tab);
+	else if (s[i] == 'X')
+		ft_handle_xmaj(tab);
+	else if (s[i] == '%')
+		ft_handle_percent(tab);
 	else
-		return (0);
+		tab->count += write(1, &s[i], 1);
 }
 
+// int	ft_isconv(const char *s)
+// {
+// 	return (*s == 'c' || *s == 's' || *s == 'p' || *s == 'd' || *s == 'i'
+// 		|| *s == 'u' || *s == 'x' || *s == 'X' || *s == '%');
+// }
 // int	main(void)
 // {
 // 	char	*str = "holohlo";

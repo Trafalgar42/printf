@@ -6,11 +6,11 @@
 /*   By: tromano <tromano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 17:03:19 by tromano           #+#    #+#             */
-/*   Updated: 2021/11/23 14:25:30 by tromano          ###   ########.fr       */
+/*   Updated: 2021/11/24 14:57:33 by tromano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "ft_printf.h"
 
 void	ft_putstr(char *str)
 {

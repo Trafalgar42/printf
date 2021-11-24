@@ -6,7 +6,7 @@
 #    By: tromano <tromano@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/18 17:37:52 by tromano           #+#    #+#              #
-#    Updated: 2021/11/23 14:01:00 by tromano          ###   ########.fr        #
+#    Updated: 2021/11/24 15:48:23 by tromano          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRCS	= ft_strlen.c\
 			ft_itoa.c\
 			ft_itoa_base.c\
 			ft_itoa_base_min.c\
+			ft_itoa_base_min_un.c\
 			ft_itoa_unsigned.c\
 			ft_printf.c
 			

@@ -6,13 +6,13 @@
 /*   By: tromano <tromano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 13:22:49 by tromano           #+#    #+#             */
-/*   Updated: 2021/11/23 13:24:59 by tromano          ###   ########.fr       */
+/*   Updated: 2021/11/24 15:34:54 by tromano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-int	ft_lenleen_base_min(int n, int base)
+int	ft_lenleen_base_min(unsigned long long n, int base)
 {
 	size_t	len;
 
@@ -27,23 +27,23 @@ int	ft_lenleen_base_min(int n, int base)
 	return (len);
 }
 
-char	*ft_convert_base_min(unsigned int num, size_t len, char *str, int base)
+char	*ft_convert_base_min(unsigned long long n, size_t l, char *s, int b)
 {
-	while (num > 0)
+	while (n > 0)
 	{
-		if (num % base > 10)
-			str[len--] = 87 + (num % base);
+		if (n % b > 10)
+			s[l--] = 87 + (n % b);
 		else
-			str[len--] = 48 + (num % base);
-		num = num / base;
+			s[l--] = 48 + (n % b);
+		n = n / b;
 	}
-	return (str);
+	return (s);
 }
 
-char	*ft_itoa_base_min(int n, int base)
+char	*ft_itoa_base_min(unsigned long long n, int base)
 {
 	size_t				len;
-	unsigned int		num;
+	unsigned long long	num;
 	char				*str;
 
 	len = ft_lenleen_base_min(n, base);

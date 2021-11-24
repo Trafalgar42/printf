@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_handle_percent.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dolceromano <dolceromano@student.42.fr>    +#+  +:+       +#+        */
+/*   By: tromano <tromano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 13:28:11 by tromano           #+#    #+#             */
-/*   Updated: 2021/11/23 20:27:22 by dolceromano      ###   ########.fr       */
+/*   Updated: 2021/11/24 13:28:14 by tromano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-void	ft_handle_percent(print *tab)
+void	ft_handle_percent(t_sprint *tab)
 {
 	tab->count += write(1, "%", 1);
 }

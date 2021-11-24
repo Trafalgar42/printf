@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_handle_xmaj.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dolceromano <dolceromano@student.42.fr>    +#+  +:+       +#+        */
+/*   By: tromano <tromano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 13:26:50 by tromano           #+#    #+#             */
-/*   Updated: 2021/11/23 20:22:30 by dolceromano      ###   ########.fr       */
+/*   Updated: 2021/11/24 16:24:31 by tromano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-void	ft_handle_xmaj(print *tab)
+void	ft_handle_xmaj(t_sprint *tab)
 {
 	char	*strprint;
 	int		num;
@@ -21,4 +21,5 @@ void	ft_handle_xmaj(print *tab)
 	strprint = ft_itoa_base(num, 16);
 	ft_putstr(strprint);
 	tab->count += ft_strlen(strprint);
+	free(strprint);
 }

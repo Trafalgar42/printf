@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_unsigned.c                                 :+:      :+:    :+:   */
+/*   ft_itoa_base_min_un.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tromano <tromano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/22 14:30:45 by tromano           #+#    #+#             */
-/*   Updated: 2021/11/24 13:55:32 by tromano          ###   ########.fr       */
+/*   Created: 2021/11/24 15:46:38 by tromano           #+#    #+#             */
+/*   Updated: 2021/11/24 16:18:34 by tromano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_lenleen_unsigned(unsigned int n)
+int	ft_lenleen_base_min_un(unsigned int n, int base)
 {
 	size_t	len;
 
@@ -22,28 +22,31 @@ int	ft_lenleen_unsigned(unsigned int n)
 	while (n != 0)
 	{
 		len++;
-		n = n / 10;
+		n = n / base;
 	}
 	return (len);
 }
 
-char	*ft_convert_unsigned(unsigned int num, size_t len, char *str)
+char	*ft_convert_base_min_un(unsigned int n, size_t l, char *s, int b)
 {
-	while (num > 0)
+	while (n > 0)
 	{
-		str[len--] = 48 + (num % 10);
-		num = num / 10;
+		if (n % b > 9)
+			s[l--] = 87 + (n % b);
+		else
+			s[l--] = 48 + (n % b);
+		n = n / b;
 	}
-	return (str);
+	return (s);
 }
 
-char	*ft_itoa_unsigned(unsigned int n)
+char	*ft_itoa_base_min_un(unsigned int n, int base)
 {
 	size_t				len;
 	unsigned int		num;
 	char				*str;
 
-	len = ft_lenleen_unsigned(n);
+	len = ft_lenleen_base_min_un(n, base);
 	str = malloc(sizeof(char) * len + 1);
 	if (!str)
 		return (NULL);
@@ -57,6 +60,6 @@ char	*ft_itoa_unsigned(unsigned int n)
 	}
 	else
 		num = n;
-	str = ft_convert_unsigned(num, len, str);
+	str = ft_convert_base_min_un(num, len, str, base);
 	return (str);
 }

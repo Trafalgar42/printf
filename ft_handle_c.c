@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_handle_c.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dolceromano <dolceromano@student.42.fr>    +#+  +:+       +#+        */
+/*   By: tromano <tromano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 14:54:06 by tromano           #+#    #+#             */
-/*   Updated: 2021/11/23 19:48:24 by dolceromano      ###   ########.fr       */
+/*   Updated: 2021/11/24 13:28:00 by tromano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-void	ft_handle_c(print *tab)
+void	ft_handle_c(t_sprint *tab)
 {
 	char	a;
 

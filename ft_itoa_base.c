@@ -6,13 +6,13 @@
 /*   By: tromano <tromano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 12:23:31 by tromano           #+#    #+#             */
-/*   Updated: 2021/11/22 15:34:24 by tromano          ###   ########.fr       */
+/*   Updated: 2021/11/24 16:25:04 by tromano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-int	ft_lenleen_base(int n, int base)
+int	ft_lenleen_base(unsigned int n, int base)
 {
 	size_t	len;
 
@@ -31,7 +31,7 @@ char	*ft_convert_base(unsigned int num, size_t len, char *str, int base)
 {
 	while (num > 0)
 	{
-		if (num % base > 10)
+		if (num % base > 9)
 			str[len--] = 55 + (num % base);
 		else
 			str[len--] = 48 + (num % base);
@@ -40,7 +40,7 @@ char	*ft_convert_base(unsigned int num, size_t len, char *str, int base)
 	return (str);
 }
 
-char	*ft_itoa_base(int n, int base)
+char	*ft_itoa_base(unsigned int n, int base)
 {
 	size_t				len;
 	unsigned int		num;
